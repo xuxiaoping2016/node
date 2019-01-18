@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>EventEmitter Test</title>
+    <script src="./EventEmitter.js"></script>
+    <script>
+        var zObj = function () {
+            this._props = {};
+            this._emitter = new EventEmitter();
+        };
+        zObj.prototype.set = function (key, value) {
+            var old = this._props[key];
+            if (old !== value) {
+                this._props[key] = value;
+                this.emitChange(key, value, old);
+            }
+        };
+        zObj.prototype.get = function (key) {
+            return this._props[key];
+        };
+
+        zObj.prototype.onChange = function (handler, context) {
+            this._emitter.on("change", handler, context);
+        };
+        zObj.prototype.offChange = function (handler, context) {
+            this._emitter.off("change", handler, context);
+        };
+        zObj.prototype.emitChange = function (p, nv, ov) {
+            this._emitter.emit("change", {
+                source: this,
+                property: p,
+                newValue: nv,
+                oldValue: ov
+            });
+        };
+
+        var obj = new zObj();
+        obj.onChange(function (evt) {
+            console.log(evt)
+        });
+        obj.set("id", 1);
+        obj.set("id", 2);
+    </script>
+</head>
+<body>
+</body>
+</html>
