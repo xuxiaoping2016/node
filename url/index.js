@@ -1,8 +1,8 @@
 const myURL =
   new URL('https://user:pass@sub.host.com:8080/p/a/t/h?query=string#hash');
 
-console.log(myURL)
-consot ret = {
+console.log(myURL);
+const ret = {
     href:
      'https://user:pass@sub.host.com:8080/p/a/t/h?query=string#hash',
     origin: 'https://sub.host.com:8080',
