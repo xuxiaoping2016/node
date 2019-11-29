@@ -34,5 +34,5 @@ const myEmitter = new MyEmitter();
 myEmitter.on('error', (err) => {
   console.error('错误信息');
 });
-myEmitter.emit('error', new Error('错误信息'));
+myEmitter.emit('error', new Error('错误信息2'));
 // 打印: 错误信息

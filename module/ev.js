@@ -7,7 +7,7 @@ setTimeout(() => {
   module.exports.emit('ready');
 }, 1000);
 
-console.log(module)
+// console.log(module)
 
 // Module {
 //     id: '.',
@@ -71,3 +71,5 @@ Module {
 //     })(module, module.exports);
 //     return module.exports;
 //   }
+
+console.log("期望值false",require.main === module)
